@@ -10,7 +10,7 @@ public class Menu {
 			
 			while(scanner.hasNextLine()) {
 			String choice = scanner.nextLine();
-			if(choice.contains("authorise"))
+			if(choice.contains("authorize"))
 			{
 				if(User.auth(scanner)) {
 					System.out.println("Вы успешно вошли");
