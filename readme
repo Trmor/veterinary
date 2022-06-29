@@ -1,2 +1,24 @@
 Вся информация хранится в postgreSql, думаю можно было бы лучше поступить с моментом подключения к БД
 Сканер работает суперкриво.
+
+commands ↓
+
+authorize
+create user
+exit
+
+после авторизации появляется доступ к другим коммандам
+
+create doctor
+list doctor
+edit doctor
+delete doctor
+create patient
+list patient
+edit patient
+delete patient
+create appointment
+list appointment
+edit appointment
+back
+exit
