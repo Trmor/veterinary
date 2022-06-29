@@ -7,14 +7,11 @@ public class Menu {
 	
 	public static void entry(Scanner scanner){
 		
-			System.out.println("Пожалуйста выберите действие:"
-					+ "\n1. Войти"
-					+ "\n2. Зарегистрировать пользователя"
-					+ "\n0. Выйти");
+			
 			while(scanner.hasNextLine()) {
-			int choice = Integer.parseInt(scanner.nextLine());
-			switch(choice) {
-			case (1):{
+			String choice = scanner.nextLine();
+			if(choice.contains("authorise"))
+			{
 				if(User.auth(scanner)) {
 					System.out.println("Вы успешно вошли");
 					actions(scanner);
@@ -22,80 +19,78 @@ public class Menu {
 				}
 				return;
 			}
-			case (2):{
+			else if(choice.contains("create user")){
 				User.createUser(scanner);
 				return;
 			}
-			default:
+			else if(choice.contains("exit")){
 				return;
+			}
+			else {
+				System.out.println();
+				entry(scanner);
 			}
 		}
 	}
 	
 	
 	public static void actions(Scanner scanner) {
-			System.out.println("Пожалуйста выберите действие:"
-					+ "\n1. Добавить доктора"
-					+ "\n2. Посмотреть список докторов"
-					+ "\n3. Редактировать список докторов"
-					+ "\n4. Удалить докторов"
-					+ "\n5. Добавить пациента"
-					+ "\n6. Посмотреть список пациентов"
-					+ "\n7. Редактировать список пациентов"
-					+ "\n8. Удалить пациента"
-					+ "\n9. Создать заявку"
-					+ "\n10. Посмотреть заявки по ФИО"
-					+ "\n11. Редактировать заявки"
-					+ "\n0. Вернуться");
-			int choice = Integer.parseInt(scanner.nextLine());
+			
+			String choice =scanner.nextLine();
 		
-			switch(choice) {
-			case (1):{
+			if(choice.contains("create doctor")) {
 				Doctor.createDoctor(scanner);
 				actions(scanner);
 			}
-			case (2):{
+			else if(choice.contains("list doctor")){
 				Doctor.listDoctor();
 				actions(scanner);
 			}
-			case (3):{
+			else if(choice.contains("edit doctor")){
 				Doctor.editDoctor(scanner);
 				actions(scanner);
 			}
-			case (4):{
+			else if(choice.contains("delete doctor")){
 				Doctor.deleteDoctor(scanner);
 				actions(scanner);
 			}
-			case (5):{
+			else if(choice.contains("create patient")){
 				Patient.createPatient(scanner);
 				actions(scanner);
 			}
-			case (6):{
+			else if(choice.contains("list patient")){
 				Patient.listPatient();
 				actions(scanner);
 			}
-			case (7):{
+			else if(choice.contains("edit patient")){
 				Patient.editPatient(scanner);
 				actions(scanner);
 			}
-			case (8):{
+			else if(choice.contains("delete patient")){
 				Patient.deletePatient(scanner);
 				actions(scanner);
 			}
-			case (9):{
+			else if(choice.contains("create appointment")){
 				Appointment.createAppointment(scanner);
 				actions(scanner);
 			}
-			case (10):{
+			else if(choice.contains("list appointment")){
 				Appointment.listFilterAppointment(scanner);
 				actions(scanner);
 			}
-			case (11):{
+			else if(choice.contains("edit appointment")){
 				Appointment.editAppointment(scanner);
 				actions(scanner);
 			}
-			default:
+			else if(choice.contains("back")){
 				entry(scanner);
+			}
+			else if(choice.contains("exit")){
+				return;
+			}
+			else {
+				System.out.println("Такой комманды не существует");
+				actions(scanner);
 			}
 		
 	}
